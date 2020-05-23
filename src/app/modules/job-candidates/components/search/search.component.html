@@ -1,0 +1,39 @@
+<div class="input-group">
+    <input
+        [(ngModel)]="asyncSelected"
+        [typeahead]="dataSource"
+        [typeaheadAsync]="true"
+        [adaptivePosition]="true"
+        [typeaheadMinLength]="3"
+        [typeaheadScrollable]="true"
+        typeaheadOptionField="name"
+        (typeaheadLoading)="changeTypeaheadLoading($event)"
+        (typeaheadOnSelect)="onJobSelect($event)"
+        (typeaheadNoResults)="typeaheadNoResults($event)"
+        type="text"
+        class="form-control rounded-0 border-0 shadow-sm"
+        [placeholder]="jobs && jobs.length > 0 ? 'Type to search for job names...' : 'Please wait...'"
+        [disabled]="jobs && jobs.length == 0"
+    >
+    <div class="input-group-append">
+        <button
+            class="btn btn-secondary rounded-0 shadow-sm"
+            type="button"
+            (click)="searchForQualifiedCandidates()"
+            [disabled]="!asyncSelected || noResult"
+        >
+            Search
+            <i class="fa fa-paper-plane ml-2"></i>
+        </button>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col col-sm-6 m-auto">
+        <div
+            class="alert alert-danger"
+            *ngIf="noResult"
+        >No Results Found</div>
+    </div>
+</div>

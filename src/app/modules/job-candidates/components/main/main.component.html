@@ -1,0 +1,13 @@
+<div
+    class="d-flex justify-content-center align-items-center search-box"
+    [ngStyle]="{'height': showTable ? '45vh' : '100vh'}"
+>
+    <app-search (search)="searchForQualifiedCandidates($event)"></app-search>
+</div>
+
+<ng-container *ngIf="showTable">
+    <app-table
+        [loading]="loadingCandidates"
+        [candidates]="candidates"
+    ></app-table>
+</ng-container>

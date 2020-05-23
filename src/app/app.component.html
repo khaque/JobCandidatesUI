@@ -1,0 +1,22 @@
+<nav class="navbar fixed-top navbar-light bg-white shadow-sm">
+  <div class="container">
+    <span class="navbar-brand mb-0 h1 text-muted">Job Candidates</span>
+  </div>
+</nav>
+
+<div class="w-100">
+  <router-outlet></router-outlet>
+</div>
+
+<!-- Go to Top Button -->
+<div
+  class="go-to-top"
+  *ngIf="showGoToTop"
+>
+  <button
+    class="btn btn-secondary rounded-0 shadow"
+    (click)="goToTop()"
+  >
+    <i class="fa fa-chevron-up"></i>
+  </button>
+</div>
